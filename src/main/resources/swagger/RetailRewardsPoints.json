@@ -82,20 +82,21 @@
             "type": "string"
           },
           {
-            "name": "application-id",
+            "name": "applicationid",
             "in": "header",
             "description": "Unique name/id of the calling application or system for traceability, logging and analytics",
             "enum": [
               "RETAIL",
               "CUSTOMERSUPPORT",
-              "DIGORDER"
+              "DIGORDER",
+              "POS/PHYSICALSTORE"
             ],
             "x-example": "RETAIL, CUSTOMERSUPPORT, DIGIORDER",
             "required": true,
             "type": "string"
           },
           {
-            "name": "activity-id",
+            "name": "activityid",
             "in": "header",
             "description": "Unique identifier of the request for traceability and logging",
             "x-example": "c34e7acd-384b-4c22-8b02-ba396368250",
@@ -104,12 +105,29 @@
             "format": "UUID"
           },
           {
-            "name": "workflow-id",
+            "name": "workflowid",
             "in": "header",
-            "description": "Unique identifier of the business use case for traceability and logging",
+            "description": "Unique workflow identifier of the business use case for traceability and logging",
             "x-example": "DIGORDER",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "interactionid",
+            "in": "header",
+            "description": "Unique identifier for interaction between calling system and the API",
+            "x-example": "c34e7acd-384b-4c22-8b02-ba3963681351",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "timestamp",
+            "in": "header",
+            "description": "Instant timestamp of the request for traceability and logging",
+            "x-example": "2022-10-13T12:55:02.000Z",
+            "required": true,
+            "type": "string",
+            "format": "date-time"
           }
         ],
         "responses": {

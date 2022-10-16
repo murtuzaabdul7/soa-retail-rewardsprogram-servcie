@@ -34,14 +34,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-cassandra</artifactId>
         </dependency>
 
         <dependency>
@@ -181,88 +177,88 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>build-helper-maven-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        &lt;!&ndash; Need to ensure the generated source folder is added to the project classpath, in jdt.ls &ndash;&gt;-->
-<!--                        <id>add-source</id>-->
-<!--                        <phase>generate-sources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>add-source</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <sources>-->
-<!--                                <source>${project.build.directory}/generated-sources/</source>-->
-<!--                            </sources>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.openapitools</groupId>-->
-<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
-<!--                <version>3.3.4</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>DeviceDetailsResponse</id>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/swagger/SprintDeviceDetails.json-->
-<!--                            </inputSpec>-->
-<!--                            <generatorName>spring</generatorName>-->
-<!--                            <generateApis>false</generateApis>-->
-<!--                            <generateModels>true</generateModels>-->
-<!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
-<!--                            <generateModelTests>false</generateModelTests>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <modelPackage>-->
-<!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.devicedetails-->
-<!--                            </modelPackage>-->
-<!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
-<!--                            <configOptions>-->
-<!--                                <dateLibrary>java8</dateLibrary>-->
-<!--                                <library>spring-mvc</library>-->
-<!--                            </configOptions>-->
-<!--                            <output>${project.build.directory}/generated-sources</output>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                    <execution>-->
-<!--                        <id>MakeModelDetailsResponse</id>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/swagger/MakeModelDetails.json</inputSpec>-->
-<!--                            <generatorName>spring</generatorName>-->
-<!--                            <generateApis>false</generateApis>-->
-<!--                            <generateModels>true</generateModels>-->
-<!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
-<!--                            <generateModelTests>false</generateModelTests>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <modelPackage>-->
-<!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.makemodeldetails-->
-<!--                            </modelPackage>-->
-<!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
-<!--                            <configOptions>-->
-<!--                                <dateLibrary>java8</dateLibrary>-->
-<!--                                <library>spring-mvc</library>-->
-<!--                            </configOptions>-->
-<!--                            <output>${project.build.directory}/generated-sources</output>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.codehaus.mojo</groupId>-->
+            <!--                <artifactId>build-helper-maven-plugin</artifactId>-->
+            <!--                <version>3.0.0</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        &lt;!&ndash; Need to ensure the generated source folder is added to the project classpath, in jdt.ls &ndash;&gt;-->
+            <!--                        <id>add-source</id>-->
+            <!--                        <phase>generate-sources</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>add-source</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <sources>-->
+            <!--                                <source>${project.build.directory}/generated-sources/</source>-->
+            <!--                            </sources>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.openapitools</groupId>-->
+            <!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
+            <!--                <version>3.3.4</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>DeviceDetailsResponse</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <inputSpec>${project.basedir}/src/main/resources/swagger/SprintDeviceDetails.json-->
+            <!--                            </inputSpec>-->
+            <!--                            <generatorName>spring</generatorName>-->
+            <!--                            <generateApis>false</generateApis>-->
+            <!--                            <generateModels>true</generateModels>-->
+            <!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
+            <!--                            <generateModelTests>false</generateModelTests>-->
+            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+            <!--                            <modelPackage>-->
+            <!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.devicedetails-->
+            <!--                            </modelPackage>-->
+            <!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
+            <!--                            <configOptions>-->
+            <!--                                <dateLibrary>java8</dateLibrary>-->
+            <!--                                <library>spring-mvc</library>-->
+            <!--                            </configOptions>-->
+            <!--                            <output>${project.build.directory}/generated-sources</output>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                    <execution>-->
+            <!--                        <id>MakeModelDetailsResponse</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>generate</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <inputSpec>${project.basedir}/src/main/resources/swagger/MakeModelDetails.json</inputSpec>-->
+            <!--                            <generatorName>spring</generatorName>-->
+            <!--                            <generateApis>false</generateApis>-->
+            <!--                            <generateModels>true</generateModels>-->
+            <!--                            <generateModelDocumentation>false</generateModelDocumentation>-->
+            <!--                            <generateModelTests>false</generateModelTests>-->
+            <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
+            <!--                            <modelPackage>-->
+            <!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.makemodeldetails-->
+            <!--                            </modelPackage>-->
+            <!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
+            <!--                            <configOptions>-->
+            <!--                                <dateLibrary>java8</dateLibrary>-->
+            <!--                                <library>spring-mvc</library>-->
+            <!--                            </configOptions>-->
+            <!--                            <output>${project.build.directory}/generated-sources</output>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>gitlab-maven</id>-->
-<!--            <url>https://gitlab.com/api/v4/projects/-/packages/maven</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>gitlab-maven</id>-->
+    <!--            <url>https://gitlab.com/api/v4/projects/-/packages/maven</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 </project>

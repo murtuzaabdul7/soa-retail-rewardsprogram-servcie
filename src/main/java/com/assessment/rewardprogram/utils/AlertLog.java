@@ -12,7 +12,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class SplunkAlert {
+public class AlertLog {
 	
 	@JsonProperty
 	private String errorCode;
@@ -25,8 +25,8 @@ public class SplunkAlert {
 	@JsonProperty
 	private String headerInfo;
 	
-	public static SplunkAlert generateSplunkAlert(String errorCode, String errorDescription, String serviceName,
-												  String systemMessage, String headerInfo) {
-		return new SplunkAlert(errorCode, errorDescription, serviceName, systemMessage, headerInfo);
+	public static AlertLog generateAlert(String errorCode, String errorDescription, String serviceName,
+											   String systemMessage, String headerInfo) {
+		return new AlertLog(errorCode, errorDescription, serviceName, systemMessage, headerInfo);
 	}
 }

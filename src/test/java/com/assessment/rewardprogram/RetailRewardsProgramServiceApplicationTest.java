@@ -29,9 +29,5 @@ public class RetailRewardsProgramServiceApplicationTest {
 		when(SpringApplication.run((Class<?>)any(), any())).thenReturn(configurableApplicationContextMock);
 		RetailRewardsProgramServiceApplication.main(new String[1]);
 	}
-	
-	@Test
-	public void testRestTemplate() {
-		retailRewardsProgramServiceApplication.restTemplate();
-	}
+
 }
