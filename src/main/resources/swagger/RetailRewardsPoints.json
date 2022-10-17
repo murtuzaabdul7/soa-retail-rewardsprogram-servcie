@@ -56,10 +56,10 @@
         "parameters": [
           {
             "in": "body",
-            "name": "customerId",
+            "name": "customer-details",
             "description": "Customer Id that uniquely identifies a customer. It is used here to retrieve the recorded orders for a customer.",
             "schema": {
-              "$ref": "#/definitions/rewardPointsDetails"
+              "$ref": "#/definitions/rewardPointsDetailsRequest"
             }
           },
           {
@@ -136,26 +136,15 @@
             "examples": {
               "application/json": {
                 "customerId": "100149833646726",
-                "startDate": "2022-08-01",
-                "endDate": "2022-08-31",
-                "totalRewardPoints": 90.5
+                "startDate": "2022-08-01T00:00:00.000000001Z",
+                "endDate": "2022-12-31T23:59:59.999999999Z",
+                "totalRewardPoints": 70,
+                "totalPurchaseOrders": 2,
+                "totalPurchaseOrderAmount": 170
               }
             },
             "schema": {
               "$ref": "#/definitions/rewardPointsDetailsResponse"
-            }
-          },
-          "204": {
-            "description": "No Content found",
-            "schema": {
-              "$ref": "#/definitions/error"
-            },
-            "examples": {
-              "application/json": {
-                "code": "204",
-                "userMessage": "No Content found",
-                "systemMessage": "No Content found for customerId 508967173536000"
-              }
             }
           },
           "400": {
@@ -194,19 +183,6 @@
                 "code": "403",
                 "userMessage": "Invalid clientId",
                 "systemMessage": "Invalid Api Key For Given Resource"
-              }
-            }
-          },
-          "404": {
-            "description": "The resource not found",
-            "schema": {
-              "$ref": "#/definitions/error"
-            },
-            "examples": {
-              "application/json": {
-                "code": "RSP404",
-                "userMessage": "The resource not found",
-                "systemMessage": "Reward Details not found for the customerId 508967173536000"
               }
             }
           },
@@ -267,15 +243,21 @@
     }
   },
   "definitions": {
-    "rewardPointsDetails": {
+    "rewardPointsDetailsRequest": {
       "type": "object",
       "description": "Calculating reward points for a customer for a given period",
       "properties": {
-        "customerId": {
-          "type": "string",
+        "customerIds": {
+          "type": "array",
           "x-required": true,
-          "example": 8909062438,
-          "description": "customerId is a 10-digit numeric number to uniquely identify customer."
+          "description": "List of customerId for which the rewards points are to be calculated.",
+          "items": {
+            "type": "string",
+            "example": [
+              "101",
+              "102"
+            ]
+          }
         },
         "startRange": {
           "type": "object",
@@ -324,40 +306,13 @@
           "minLength": 10,
           "maxLength": 10
         },
-        "startRange": {
-          "type": "object",
-          "properties": {
-            "year": {
-              "x-nullable": false,
-              "type": "string",
-              "example": 2022,
-              "description": "year for start range"
-            },
-            "month": {
-              "x-nullable": false,
-              "type": "string",
-              "example": "MAY",
-              "description": "month of start range"
-            }
-          }
+        "startDate": {
+          "type": "string",
+          "example": "2022-08-01T00:00:00.000000001Z"
         },
-        "endRange": {
-          "type": "object",
-          "x-nullable": true,
-          "properties": {
-            "year": {
-              "type": "string",
-              "example": 2022,
-              "x-nullable": true,
-              "description": "year of end range"
-            },
-            "month": {
-              "type": "string",
-              "example": "JULY",
-              "x-nullable": true,
-              "description": "month of end range"
-            }
-          }
+        "endtDate": {
+          "type": "string",
+          "example": "2022-09-31T23:59:59.999999999Z"
         },
         "totalRewardPoints": {
           "type": "number",
@@ -366,6 +321,20 @@
           "pattern": "^[0-9]+(\\.[0-9]{1,2})?$",
           "example": "0.0, 10.0, 80.3, 90.5",
           "description": "Total Reward Points are positive number. Upto 2 digits decimal."
+        },
+        "totalPurchaseOrders": {
+          "type": "number",
+          "format": "integer",
+          "x-nullable": false,
+          "example": "0,1,2,3",
+          "description": "Total number of purchase order for a customer in given range."
+        },
+        "totalPurchaseOrderAmount": {
+          "type": "number",
+          "format": "double",
+          "x-nullable": false,
+          "example": "10.0, 70.0, 90.0",
+          "description": "Total amount of all purchase orders."
         }
       }
     },

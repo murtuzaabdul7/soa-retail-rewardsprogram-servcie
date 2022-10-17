@@ -1,0 +1,272 @@
+swagger: '2.0'
+info:
+  description: This Swagger is for the API to retrieves reward point details for a given customer.
+  version: 1.0.0
+  title: Retail Reward Points Program
+  contact:
+    name: Murtuza
+    email: murtuzaabdul7@gmail.com
+    url: https://github.com/murtuzaabdul7
+host: somerandombasepathurl.net
+basePath: /retail-rewardsprogram-service/v1
+x-servers:
+  - url: https://{prodSubdomain}.domain.com/{basepath}
+    description: Production Server
+  - url: https://{devSubdomain}.domain.com/{basepath}
+    description: Dev Server
+tags:
+  - name: reward-points-details
+    description: Get retail rewards points
+schemes:
+  - https
+paths:
+  /reward-points-details:
+    post:
+      tags:
+        - reward-points-details
+      summary: Get Reward Points by customerId and a given startDate and endDate range.
+      description: A new API to get Reward Points for a customer in a given period
+      operationId: getRewardPointsDetails
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - Oauth:
+            - read:rewardPointsDetails
+      parameters:
+        - in: body
+          name: customer-details
+          description: Customer Id that uniquely identifies a customer. It is used here to retrieve the recorded orders for a customer.
+          schema:
+            $ref: '#/definitions/rewardPointsDetailsRequest'
+        - name: Authorization
+          in: header
+          description: OAuth 2.0 access token with the authentication type set as Bearer.
+          x-example: Bearer actual OAuth token
+          required: true
+          type: string
+        - name: Content-Type
+          in: header
+          description: The Content-Type header specifies the actual type of the returned payload.
+          enum:
+            - application/json
+          x-example: application/json
+          required: true
+          type: string
+        - name: applicationid
+          in: header
+          description: Unique name/id of the calling application or system for traceability, logging and analytics
+          enum:
+            - RETAIL
+            - CUSTOMERSUPPORT
+            - DIGORDER
+            - POS/PHYSICALSTORE
+          x-example: RETAIL, CUSTOMERSUPPORT, DIGIORDER
+          required: true
+          type: string
+        - name: activityid
+          in: header
+          description: Unique identifier of the request for traceability and logging
+          x-example: c34e7acd-384b-4c22-8b02-ba396368250
+          required: true
+          type: string
+          format: UUID
+        - name: workflowid
+          in: header
+          description: Unique workflow identifier of the business use case for traceability and logging
+          x-example: DIGORDER
+          required: false
+          type: string
+        - name: interactionid
+          in: header
+          description: Unique identifier for interaction between calling system and the API
+          x-example: c34e7acd-384b-4c22-8b02-ba3963681351
+          required: false
+          type: string
+        - name: timestamp
+          in: header
+          description: Instant timestamp of the request for traceability and logging
+          x-example: '2022-10-13T12:55:02.000Z'
+          required: true
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Success
+          examples:
+            application/json:
+              customerId: '100149833646726'
+              startDate: '2022-08-01T00:00:00.000000001Z'
+              endDate: '2022-12-31T23:59:59.999999999Z'
+              totalRewardPoints: 70
+              totalPurchaseOrders: 2
+              totalPurchaseOrderAmount: 170
+          schema:
+            $ref: '#/definitions/rewardPointsDetailsResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: RPS001
+              userMessage: Mandatory Fields are missing in the request. CustomerId and StartRange are required.
+              systemMessage: A valid customerId is required as an input
+        '401':
+          description: Unauthorised Access
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '401'
+              userMessage: Access token expired
+              systemMessage: Access token expired
+        '403':
+          description: Forbidden Access
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '403'
+              userMessage: Invalid clientId
+              systemMessage: Invalid Api Key For Given Resource
+        '405':
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '405'
+              userMessage: Method Not Allowed
+              systemMessage: Method Not Allowed
+        '415':
+          description: Unsupported Media Type
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '415'
+              userMessage: Unsupported Media Type
+              systemMessage: Unsupported Media Type
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '500'
+              userMessage: Internal Server Error
+              systemMessage: Internal Server Error
+        '503':
+          description: Service Unavailable
+          schema:
+            $ref: '#/definitions/error'
+          examples:
+            application/json:
+              code: '503'
+              userMessage: Service Unavailable
+              systemMessage: Service Unavailable
+definitions:
+  rewardPointsDetailsRequest:
+    type: object
+    description: Calculating reward points for a customer for a given period
+    properties:
+      customerIds:
+        type: array
+        x-required: true
+        description: List of customerId for which the rewards points are to be calculated.
+        items:
+          type: string
+          example:
+            - '101'
+            - '102'
+      startRange:
+        type: object
+        x-required: true
+        properties:
+          year:
+            x-required: true
+            type: string
+            example: 2022
+            description: year for start range
+          month:
+            x-required: true
+            type: string
+            example: MAY
+            description: month of start range
+      endRange:
+        type: object
+        properties:
+          year:
+            type: string
+            example: 2022
+            description: year of end range
+          month:
+            type: string
+            example: JULY
+            description: month of end range
+  rewardPointsDetailsResponse:
+    type: object
+    description: Contains reward point details for a customer for a given month/period.
+    properties:
+      customerId:
+        type: string
+        example: 8909062438, 2485151050, 3021172851
+        x-nullable: false
+        description: The customerId is a unique attribute to lookup customer details.
+        minLength: 10
+        maxLength: 10
+      startDate:
+        type: string
+        example: '2022-08-01T00:00:00.000000001Z'
+      endtDate:
+        type: string
+        example: '2022-09-31T23:59:59.999999999Z'
+    
+      totalRewardPoints:
+        type: number
+        format: double
+        x-nullable: false
+        pattern: ^[0-9]+(\.[0-9]{1,2})?$
+        example: 0.0, 10.0, 80.3, 90.5
+        description: Total Reward Points are positive number. Upto 2 digits decimal.
+      totalPurchaseOrders:
+        type: number
+        format: integer
+        x-nullable: false
+        example: 0,1,2,3
+        description: Total number of purchase order for a customer in given range.
+      totalPurchaseOrderAmount:
+        type: number
+        format: double
+        x-nullable: false
+        example: 10.0, 70.0, 90.0
+        description: Total amount of all purchase orders.
+  error:
+    description: a collection of errors
+    type: object
+    properties:
+      code:
+        x-required: true
+        description: Used to pass error codes
+        type: string
+        format: string
+      userMessage:
+        x-required: true
+        description: Used to pass human friendly information to the user.
+        type: string
+        format: string
+      systemMessage:
+        x-required: true
+        description: Used to pass system information.
+        type: string
+        format: string
+securityDefinitions:
+  Oauth:
+    type: oauth2
+    description: Assuming that we have a service that generates access Token for the registered clients to our API. The below url generates and returns a Bearer Token by passing the respective client credentials
+    tokenUrl: https://somerandombasepath.com/v1/oauth2/accesstoken?grant_type=client_credentials
+    flow: application
+    scopes:
+      read:rewardPointsDetails: Reward Points Details
