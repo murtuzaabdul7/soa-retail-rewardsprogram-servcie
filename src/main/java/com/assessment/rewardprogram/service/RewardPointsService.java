@@ -1,4 +1,4 @@
-package com.assessment.rewardprogram.service.helper;
+package com.assessment.rewardprogram.service;
 
 
 import com.assessment.rewardprogram.domain.request.RewardPointsRequest;
@@ -10,5 +10,5 @@ import javax.validation.constraints.NotNull;
 @Service
 public interface RewardPointsService {
 
-    RewardPointsDetailsResponse calculateRewardPoints(@NotNull RewardPointsRequest rewardPointsRequest);
+    RewardPointsDetailsResponse getRewardPoints(@NotNull RewardPointsRequest rewardPointsRequest);
 }

@@ -4,7 +4,7 @@ import com.assessment.rewardprogram.domain.request.HeaderInfo;
 import com.assessment.rewardprogram.domain.request.RewardPointsRequest;
 import com.assessment.rewardprogram.domain.request.populator.HeaderInfoPopulator;
 import com.assessment.rewardprogram.domain.response.RewardPointsDetailsResponse;
-import com.assessment.rewardprogram.service.helper.RewardPointsServiceImpl;
+import com.assessment.rewardprogram.service.RewardPointsServiceImpl;
 import com.assessment.rewardprogram.utils.Validator;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.YearMonth;
 
 @Slf4j
 @RestController
@@ -61,7 +58,6 @@ public class RewardPointsDetailsController {
 
         // validate request object
         validator.validateRequestObject(rewardPointsRequest);
-
-        return rewardPointsService.calculateRewardPoints(rewardPointsRequest);
+        return rewardPointsService.getRewardPoints(rewardPointsRequest);
     }
 }

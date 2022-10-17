@@ -4,6 +4,8 @@ package com.assessment.rewardprogram.domain.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -11,8 +13,8 @@ import lombok.*;
 @ToString
 public class RewardPointsRequest {
 
-    @JsonProperty("customerId")
-    private String customerId;
+    @JsonProperty("customerIds")
+    private List<String> customerIdList;
 
     @JsonProperty("startRange")
     private PeriodRange startRange;

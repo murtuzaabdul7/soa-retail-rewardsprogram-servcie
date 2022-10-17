@@ -8,6 +8,7 @@ import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Table(value = "salesorderdetails")
@@ -32,13 +33,13 @@ public class SalesOrderDetails {
     private String createdBy;
 
     @Column(value = "createdon")
-    private Instant createdOn;
+    private LocalDateTime createdOn;
 
     @Column(value = "lastupdatedby")
     private String lastUpdatedBy;
 
     @Column(value = "lastupdatedon")
-    private Instant lastUpdatedOn;
+    private LocalDateTime lastUpdatedOn;
 
     @Column(value = "orderlineitemlist")
     private List<@Frozen OrderLineItem> orderLineItemList;

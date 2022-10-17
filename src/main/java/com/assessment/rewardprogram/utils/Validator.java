@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
 import javax.validation.constraints.NotNull;
 
@@ -21,7 +20,7 @@ public class Validator {
 
     public void validateRequestObject(@NotNull RewardPointsRequest rewardPointsRequest) {
         validateMandatoryObjects("rewardPointsRequest", rewardPointsRequest);
-        validateMandatoryObjects("customerId", rewardPointsRequest.getCustomerId());
+        validateMandatoryObjects("customerIds", rewardPointsRequest.getCustomerIdList());
         validateMandatoryObjects("startRange", rewardPointsRequest.getStartRange());
         validateMandatoryObjects("startRange.month", rewardPointsRequest.getStartRange().getMonth());
         validateMandatoryObjects("startRange.year", rewardPointsRequest.getStartRange().getYear());
