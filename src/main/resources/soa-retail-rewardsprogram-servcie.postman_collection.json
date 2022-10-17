@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "1bf7cad5-45d2-4eff-90a3-e03f685f1cc5",
+		"name": "soa-retail-rewardsprogram-servcie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14768536"
+	},
+	"item": [
+		{
+			"name": "localhost rewardpoints-service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "applicationid",
+						"value": "RETAIL",
+						"type": "text"
+					},
+					{
+						"key": "activityid",
+						"value": "c34e7acd-384b-4c22-8b02-ba396368250",
+						"type": "text"
+					},
+					{
+						"key": "workflowid",
+						"value": "DIGORDER",
+						"type": "text"
+					},
+					{
+						"key": "interactionid",
+						"value": "c34e7acd-384b-4c22-8b02-ba3963681351",
+						"type": "text"
+					},
+					{
+						"key": "timestamp",
+						"value": "2022-10-13T12:55:02Z",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": [\"101\",\"102\"],\r\n    \"startRange\": {\r\n        \"year\": \"2022\",\r\n        \"month\": \"JULY\"\r\n    },\r\n    \"endRange\": {\r\n        \"year\": \"2022\",\r\n        \"month\": \"DECEMBER\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/rewards-program/v1/reward-points-details",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rewards-program",
+						"v1",
+						"reward-points-details"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -26,7 +26,8 @@ public class RewardPointsServiceImpl implements RewardPointsService {
     private String endDate;
     private Instant endDateInstant;
 
-    public RewardPointsServiceImpl() {
+    public RewardPointsServiceImpl(SalesOrderDetailsRepository salesOrderDetailsRepository) {
+        this.salesOrderDetailsRepository = salesOrderDetailsRepository;
     }
 
 
