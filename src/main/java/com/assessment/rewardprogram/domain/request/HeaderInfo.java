@@ -16,34 +16,24 @@ public class HeaderInfo {
     @JsonProperty
     private String applicationid;
     @JsonProperty
-    private String channelid;
-    @JsonProperty
     private String activityid;
     @JsonProperty
     private String interactionid;
+
     @JsonProperty
-    private String applicationuserid;
-    @JsonProperty
-    private String senderid;
-    @JsonProperty
-    private String sessionid;
+    private String workdlowid;
     @JsonProperty
     private String timestamp;
 
     @Override
     public String toString() {
         return MessageFormat.format("Headerinfo (applicationid={0}, " +
-                        "channelid={1}, " +
-                        "activityid={2}," +
-                        "interactionid={3}," +
-                        "applicationuserid={4}," +
-                        "senderid={5}," +
-                        "sessionid={6}," +
-                        "timestamp={7})",
-                replaceMissingHeadersWithNull(applicationid),
-                replaceMissingHeadersWithNull(channelid), replaceMissingHeadersWithNull(activityid),
-                replaceMissingHeadersWithNull(interactionid), replaceMissingHeadersWithNull(applicationuserid),
-                replaceMissingHeadersWithNull(senderid), replaceMissingHeadersWithNull(sessionid),
+                        "activityid={1}," +
+                        "interactionid={2}," +
+                        "workflowid={3}," +
+                        "timestamp={4})",
+                replaceMissingHeadersWithNull(applicationid), replaceMissingHeadersWithNull(activityid),
+                replaceMissingHeadersWithNull(interactionid), replaceMissingHeadersWithNull(workdlowid),
                 replaceMissingHeadersWithNull(timestamp));
     }
 

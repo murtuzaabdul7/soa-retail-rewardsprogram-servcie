@@ -20,15 +20,12 @@ public class HeaderInfoPopulator {
 
     public void populate(HttpHeaders headers) {
 
-        headerInfo.setApplicationid(headers.getFirst(RetailRewardsProgramServiceConstants.APPLICATIONID));
-        headerInfo.setChannelid(headers.getFirst(RetailRewardsProgramServiceConstants.CHANNELID));
-        headerInfo.setActivityid(headers.getFirst(RetailRewardsProgramServiceConstants.ACTIVITYID));
+        headerInfo.setApplicationid(headers.getFirst(RetailRewardsProgramServiceConstants.APPLICATION_ID));
+        headerInfo.setActivityid(headers.getFirst(RetailRewardsProgramServiceConstants.ACTIVITY_ID));
 
         headerInfo.setTimestamp(headers.getFirst(RetailRewardsProgramServiceConstants.TIMESTAMP));
-        headerInfo.setInteractionid(headers.getFirst(RetailRewardsProgramServiceConstants.INTERACTIONID));
-        headerInfo.setApplicationuserid(headers.getFirst(RetailRewardsProgramServiceConstants.APPLICATIONUSERID));
+        headerInfo.setInteractionid(headers.getFirst(RetailRewardsProgramServiceConstants.INTERACTION_ID));
 
-        headerInfo.setSenderid(headers.getFirst(RetailRewardsProgramServiceConstants.SENDER_ID_CODE));
-        headerInfo.setSessionid(headers.getFirst(RetailRewardsProgramServiceConstants.SESSIONID));
+        headerInfo.setWorkdlowid(headers.getFirst(RetailRewardsProgramServiceConstants.WORKFLOW_ID));
     }
 }
