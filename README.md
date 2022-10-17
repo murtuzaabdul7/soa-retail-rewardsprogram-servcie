@@ -112,5 +112,13 @@ Sample Response:
     
    Postman snapshot
 ![image](https://user-images.githubusercontent.com/115746670/196280701-37cfde05-fe82-4b13-8815-47971efb48ac.png)
+
+![image](https://user-images.githubusercontent.com/115746670/196282027-acb62a91-a363-4e19-9d32-a0cbf7cb7f98.png)
+
+                                                                                                                         
+ Parameterized Tests Success
+
+![image](https://user-images.githubusercontent.com/115746670/196282289-8c99b451-8c68-4e10-a216-a5d17d603366.png)
+                                                                                        
    
   
