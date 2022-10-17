@@ -6,9 +6,22 @@ purchase.
 A customer receives 2 points for every dollar spent over $100 in each transaction, plus 1 point
 for every dollar spent over $50 in each transaction
 (e.g. a $120 purchase = 2x$20 + 1x$50 = 90 points).
-
 Given a record of every transaction during a three month period, calculate the reward points
 earned for each customer per month and total.
+
+
+Assumptions made:
+If a customer has multiple orders in a given range, then the rewards points are calculated based on individual PurchaseOrders and not Cumulative PurchaseOrderAmount.
+For ex: 
+Order1: 
+PurchaseAmount: $70
+Rewards: 20 points
+
+Order2:
+PurchaseAmount: $120
+Rewards: 90 points
+
+So the total reward points is 110 and not 230 (based on $190 total) .
 
 Tech stack used:
 Java 8
