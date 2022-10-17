@@ -57,7 +57,15 @@ values ('102_002',
 100.0, true,'COMPLETED');
 
 
+Example query for order filering:
+select * from salesorderdetails where customerid='101' and createdon >= '2020-08-01 00:00:00+0000'  AND createdon <= '2022-08-30 00:00:00+0000' allow filtering;    
+    
+CQLSH snapshot
+![image](https://user-images.githubusercontent.com/115746670/196281386-a7a0d8f8-58b1-416e-a9f3-38814ff51cd5.png)
 
+
+
+   
 curl --location --request POST 'localhost:8080/rewards-program/v1/reward-points-details' \
 --header 'applicationid: RETAIL' \
 --header 'activityid: c34e7acd-384b-4c22-8b02-ba396368250' \
@@ -100,3 +108,9 @@ Sample Response:
     ]
 }
  
+[Postman Collection](https://github.com/murtuzaabdul7/soa-retail-rewardsprogram-servcie/blob/main/src/main/resources/soa-retail-rewardsprogram-servcie.postman_collection.json)
+    
+   Postman snapshot
+![image](https://user-images.githubusercontent.com/115746670/196280701-37cfde05-fe82-4b13-8815-47971efb48ac.png)
+   
+  
