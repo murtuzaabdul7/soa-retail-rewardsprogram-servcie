@@ -1,4 +1,4 @@
-salesordernumber,customerid,totalpurchaseamount,rewardpointseligible,expectedValue
-101_001,101,60.0,true,60.0
-101_002,101,100.0,true,100.0
-101_003,101,120.0,true,120.0
+salesordernumber,customerid,totalpurchaseamount,rewardpointseligible,startYear,startMonth,endYear,endMonth,expectedValue
+101_001,101,60.0,true,2022,AUGUST,null,null,10.0
+101_002,101,100.0,true,2022,AUGUST,2022,OCTOBER,50.0
+101_003,101,120.0,true,2022,AUGUST,2023,JANUARY,90.0
