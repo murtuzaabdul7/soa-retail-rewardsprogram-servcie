@@ -14,6 +14,9 @@ Tech stack used:
 Java 8
 Spring Boot 2.7.2
 
+Swagger location: https://github.com/murtuzaabdul7/soa-retail-rewardsprogram-servcie/blob/main/src/main/resources/swagger/RetailRewardsPoints.json
+File can be viewed at: https://editor.swagger.io/
+
 Datasource:
 Apache Cassandra
 
@@ -52,3 +55,48 @@ values ('102_002',
 'DIGIORDER','2022-08-12T18:00:00+00:00',
 [{orderlineid:'11', productid:'PID137', soldamount: 100.0, status:'DELIVERED', isrewardeligible:true}],
 100.0, true,'COMPLETED');
+
+
+
+curl --location --request POST 'localhost:8080/rewards-program/v1/reward-points-details' \
+--header 'applicationid: RETAIL' \
+--header 'activityid: c34e7acd-384b-4c22-8b02-ba396368250' \
+--header 'workflowid: DIGORDER' \
+--header 'interactionid: c34e7acd-384b-4c22-8b02-ba3963681351' \
+--header 'timestamp: 2022-10-13T12:55:02Z' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "customerIds": ["101","102"],
+    "startRange": {
+        "year": "2022",
+        "month": "AUGUST"
+    },
+    "endRange": {
+        "year": "2022",
+        "month": "DECEMBER"
+    }
+}'
+
+
+Sample Response:
+{
+    "rewardPointsDetailsList": [
+        {
+            "customerId": "101",
+            "startDate": "2022-08-01T00:00:00.000000001Z",
+            "endDate": "2022-12-31T23:59:59.999999999Z",
+            "totalRewardPoints": 170.0,
+            "totalPurchaseOrders": 4,
+            "totalPurchaseOrderAmount": 350.0
+        },
+        {
+            "customerId": "102",
+            "startDate": "2022-08-01T00:00:00.000000001Z",
+            "endDate": "2022-12-31T23:59:59.999999999Z",
+            "totalRewardPoints": 70.0,
+            "totalPurchaseOrders": 2,
+            "totalPurchaseOrderAmount": 170.0
+        }
+    ]
+}
+ 
