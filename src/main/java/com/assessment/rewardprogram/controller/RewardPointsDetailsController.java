@@ -37,6 +37,14 @@ public class RewardPointsDetailsController {
     @Autowired
     private Validator validator;
 
+    public RewardPointsDetailsController(RewardPointsServiceImpl rewardPointsService,
+                                         HeaderInfoPopulator headerInfoPopulator,
+                                         Validator validator) {
+        this.rewardPointsService = rewardPointsService;
+        this.headerInfoPopulator = headerInfoPopulator;
+        this.validator = validator;
+    }
+
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = "SUCCESS_RESPONSE"),
             @ApiResponse(responseCode = "204", description = "No Content Found"),
             @ApiResponse(responseCode = "400", description = "Bad Request"),

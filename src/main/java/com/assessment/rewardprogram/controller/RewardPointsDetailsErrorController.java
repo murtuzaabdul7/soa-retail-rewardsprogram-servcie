@@ -23,13 +23,13 @@ public class RewardPointsDetailsErrorController {
 
     @PostMapping(RetailRewardsProgramServiceConstants.ERROR_MAPPING)
     @ExceptionHandler(Exception.class)
-    public CustomError handleException(HttpServletRequest request, HttpServletResponse response,
-                                       Exception ex) {
-        String exceptionMsg = ex.toString();
-        log.error("Exception in RewardPointsDetailsDetailsErrorController - {} ", exceptionMsg);
+    public CustomError handleException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+        String systemMessage = ex.toString();
+        String userMessage = ex.getMessage();
+        log.error("Exception in RewardPointsDetailsDetailsErrorController - {} ", userMessage);
         response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-        return new CustomError(HttpStatus.INTERNAL_SERVER_ERROR.toString(), exceptionMsg,
-                exceptionMsg);
+        return new CustomError(HttpStatus.INTERNAL_SERVER_ERROR.toString(), userMessage,
+                systemMessage);
     }
 
     @ExceptionHandler(InvalidInputException.class)
@@ -107,7 +107,8 @@ public class RewardPointsDetailsErrorController {
                                                        HttpMessageNotReadableException httpMessageNotReadableException) {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         log.error("HttpMessageNotReadableException in RewardPointsDetailsDetailsErrorController");
-        return new CustomError("400", "Your request was not correct",
+        return new CustomError("415", "Your request was not correct",
                 "Bad Request");
     }
+
 }

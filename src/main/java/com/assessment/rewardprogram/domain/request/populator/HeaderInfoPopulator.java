@@ -18,6 +18,11 @@ public class HeaderInfoPopulator {
     @Autowired
     private HeaderInfo headerInfo;
 
+    public HeaderInfoPopulator(HeaderInfo headerInfo) {
+        this.headerInfo = headerInfo;
+    }
+
+
     public void populate(HttpHeaders headers) {
 
         headerInfo.setApplicationid(headers.getFirst(RetailRewardsProgramServiceConstants.APPLICATION_ID));

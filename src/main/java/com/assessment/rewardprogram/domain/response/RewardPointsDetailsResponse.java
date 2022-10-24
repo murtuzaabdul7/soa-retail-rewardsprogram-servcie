@@ -9,8 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
 public class RewardPointsDetailsResponse {
 
     @JsonProperty("rewardPointsDetailsList")

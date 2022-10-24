@@ -21,6 +21,11 @@ public class Validator {
     public void validateRequestObject(@NotNull RewardPointsRequest rewardPointsRequest) {
         validateMandatoryObjects("rewardPointsRequest", rewardPointsRequest);
         validateMandatoryObjects("customerIds", rewardPointsRequest.getCustomerIdList());
+
+        if (!rewardPointsRequest.getCustomerIdList().isEmpty()) {
+            validateMandatoryObjects("customerIds.customerId", rewardPointsRequest.getCustomerIdList().get(0));
+        }
+
         validateMandatoryObjects("startRange", rewardPointsRequest.getStartRange());
         validateMandatoryObjects("startRange.month", rewardPointsRequest.getStartRange().getMonth());
         validateMandatoryObjects("startRange.year", rewardPointsRequest.getStartRange().getYear());

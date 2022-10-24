@@ -14,7 +14,6 @@ import java.util.List;
 @Table(value = "salesorderdetails")
 @Getter
 @Setter
-@Data
 @NoArgsConstructor
 @ToString
 public class SalesOrderDetails {
