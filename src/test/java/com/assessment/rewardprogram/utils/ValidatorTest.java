@@ -5,7 +5,6 @@ import com.assessment.rewardprogram.domain.request.PeriodRange;
 import com.assessment.rewardprogram.domain.request.RewardPointsRequest;
 import com.assessment.rewardprogram.exception.InputValidationException;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -33,9 +32,9 @@ public class ValidatorTest {
                                           String startYear, String expectedSystemMessage, String errorCode) {
         RewardPointsRequest rewardPointsRequest = new RewardPointsRequest();
         if (customerId == null) {
-            rewardPointsRequest.setCustomerIdList(null);
+            rewardPointsRequest.setCustomerIds(null);
         } else {
-            rewardPointsRequest.setCustomerIdList(Collections.singletonList(customerId));
+            rewardPointsRequest.setCustomerIds(Collections.singletonList(customerId));
         }
 
         if (startRangeObject == null) {

@@ -20,10 +20,10 @@ public class Validator {
 
     public void validateRequestObject(@NotNull RewardPointsRequest rewardPointsRequest) {
         validateMandatoryObjects("rewardPointsRequest", rewardPointsRequest);
-        validateMandatoryObjects("customerIds", rewardPointsRequest.getCustomerIdList());
+        validateMandatoryObjects("customerIds", rewardPointsRequest.getCustomerIds());
 
-        if (!rewardPointsRequest.getCustomerIdList().isEmpty()) {
-            validateMandatoryObjects("customerIds.customerId", rewardPointsRequest.getCustomerIdList().get(0));
+        if (!rewardPointsRequest.getCustomerIds().isEmpty()) {
+            validateMandatoryObjects("customerIds.customerId", rewardPointsRequest.getCustomerIds().get(0));
         }
 
         validateMandatoryObjects("startRange", rewardPointsRequest.getStartRange());

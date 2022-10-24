@@ -13,7 +13,7 @@ import java.util.List;
 public class RewardPointsRequest {
 
     @JsonProperty("customerIds")
-    private List<String> customerIdList;
+    private List<String> customerIds;
 
     @JsonProperty("startRange")
     private PeriodRange startRange;

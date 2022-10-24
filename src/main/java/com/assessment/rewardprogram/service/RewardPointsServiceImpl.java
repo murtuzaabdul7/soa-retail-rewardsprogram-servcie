@@ -45,7 +45,7 @@ public class RewardPointsServiceImpl implements RewardPointsService {
         RewardPointsDetailsResponse pointsDetailsResponse = new RewardPointsDetailsResponse();
         List<RewardPointsDetails> rewardPointsDetailsList = new ArrayList<>();
 
-        for (String customerId : rewardPointsRequest.getCustomerIdList()) {
+        for (String customerId : rewardPointsRequest.getCustomerIds()) {
             RewardPointsDetails rewardPointsDetails = getRewardsPointsForEachCustomer(customerId);
             rewardPointsDetailsList.add(rewardPointsDetails);
         }
