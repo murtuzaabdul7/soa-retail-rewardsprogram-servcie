@@ -46,7 +46,7 @@ public class RewardPointsDetailsControllerTest {
                                            double totalpurchaseamount, int totalPurchaseOrders,
                                            double rewardPoints) {
         RewardPointsRequest request = new RewardPointsRequest();
-        request.setCustomerIdList(Collections.singletonList(customerid));
+        request.setCustomerIds(Collections.singletonList(customerid));
 
         RewardPointsDetailsResponse pointsDetailsResponse = new RewardPointsDetailsResponse();
 
@@ -60,16 +60,10 @@ public class RewardPointsDetailsControllerTest {
 
         when(rewardPointsService.getRewardPoints(request)).thenReturn(pointsDetailsResponse);
 
-
         RewardPointsDetailsResponse actualResponse = rewardPointsDetailsController.getRewardPointsDetails(headers, request);
-
         assertEquals(pointsDetailsResponse, actualResponse);
-
         verify(headerInfoPopulator, times(1)).populate(headers);
         verify(validator, times(1)).validateRequestObject(request);
         verify(rewardPointsService, times(1)).getRewardPoints(request);
-
-
     }
-
 }

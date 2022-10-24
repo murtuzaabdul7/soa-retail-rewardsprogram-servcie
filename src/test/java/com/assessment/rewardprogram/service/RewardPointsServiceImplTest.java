@@ -48,7 +48,7 @@ public class RewardPointsServiceImplTest {
                                           boolean rewardpointseligible, String startYear, String startMonth,
                                           String endYear, String endMonth, double expectedValue) {
         RewardPointsRequest request = new RewardPointsRequest();
-        request.setCustomerIdList(Collections.singletonList(customerid));
+        request.setCustomerIds(Collections.singletonList(customerid));
         request.setStartRange(new PeriodRange(startYear, startMonth));
 
         if (endYear.equals("null") || endMonth.equals("null")) {

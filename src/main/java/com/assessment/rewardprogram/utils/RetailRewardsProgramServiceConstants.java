@@ -12,6 +12,7 @@ public class RetailRewardsProgramServiceConstants {
     //	 URI MAPPINGS
     public static final String ERROR_MAPPING = "/error";
     public static final String TIMESTAMP = "timestamp";
+    public static final String CONTENT_TYPE = "Content-Type";
     public static final String APPLICATION_ID = "applicationid";
     public static final String ACTIVITY_ID = "activityid";
     public static final String AUTHORIZATION = "Authorization";
