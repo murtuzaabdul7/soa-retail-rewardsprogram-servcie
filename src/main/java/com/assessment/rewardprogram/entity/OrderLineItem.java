@@ -23,12 +23,12 @@ public class OrderLineItem {
     private String productId;
 
     @Column(value = "soldamount")
-    private String soldAmount;
+    private Double soldAmount;
 
     @Column(value = "status")
     private String status;
 
     @Column(value = "isrewardeligible")
-    private String isRewardEligible;
+    private boolean isRewardEligible;
 
 }

@@ -125,7 +125,7 @@ public class RewardPointsServiceImpl implements RewardPointsService {
 
         // if range2 is null. then the request is for a given specific month. ex: 2022-05-01 to 2022-05-31.
         // else considers start and end date of given months. ex: 2022-05-01 to 2022-07-31.
-        if (null == range2) {
+        if (range2 == null) {
             YearMonth yearMonth = YearMonth.of(Integer.parseInt(range1.getYear()), Month.valueOf(range1.getMonth().toUpperCase()));     // 2015-01. January of 2015.
             startDate = yearMonth.atDay(1).atTime(0, 0, 0, 1)
                     .atOffset(ZoneOffset.UTC).toString();     // ex: 2022-10-01

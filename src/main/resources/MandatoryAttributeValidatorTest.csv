@@ -1,0 +1,7 @@
+customerId,startRangeObject,startMonth,startYear,expectedSystemMessage,errorCode
+101,,,,Invalid input key:startRange value: null,ERR001
+,,,,Invalid input key:customerIds value: null,ERR001
+null,,,,Invalid input key:customerIds.customerId value: null,ERR001
+101,startRangeObject,,2022,Invalid input key:startRange.month value: null,ERR001
+101,startRangeObject,JUNE,,Invalid input key:startRange.year value: null,ERR001
+101,startRangeObject,JUNE,2022,NA,NA

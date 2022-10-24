@@ -5,7 +5,7 @@ public class RetailRewardsProgramServiceConstants {
     private RetailRewardsProgramServiceConstants() {
 
     }
-    public static final String SERVICE_NAME = "soa-reatil-rewardprogram-servcie";
+    public static final String SERVICE_NAME = "soa-retail-rewardprogram-servcie";
     public static final String REPOSITORY_PATH = "com.assessment.rewardprogram.repository";
     public static final String REPO_BASE_PATH = "com.assessment.rewardprogram";
 
@@ -14,6 +14,7 @@ public class RetailRewardsProgramServiceConstants {
     public static final String TIMESTAMP = "timestamp";
     public static final String APPLICATION_ID = "applicationid";
     public static final String ACTIVITY_ID = "activityid";
+    public static final String AUTHORIZATION = "Authorization";
     public static final String INTERACTION_ID = "interactionid";
     public static final String WORKFLOW_ID = "workflowid";
 
