@@ -25,7 +25,7 @@ import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class RewardPointsServiceImplTest {
+class RewardPointsServiceImplTest {
 
     @InjectMocks
     private RewardPointsServiceImpl rewardPointsService;
@@ -35,7 +35,7 @@ public class RewardPointsServiceImplTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/calculateTestData.csv", numLinesToSkip = 1)
-    public void calculateTest(double totalpurchaseamount, double expected) {
+    void calculateTest(double totalpurchaseamount, double expected) {
         double actual = rewardPointsService.calculateRewardPoints(totalpurchaseamount);
         log.info("totalpurchaseamount: {}, expectedValue: {}, actualValue: {}", totalpurchaseamount, expected, actual);
         assertEquals(expected, actual, 0.1);
@@ -44,9 +44,9 @@ public class RewardPointsServiceImplTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/calculateRewardPointsData.csv", numLinesToSkip = 1)
-    public void calculateRewardPointsTest(String salesordernumber, String customerid, double totalpurchaseamount,
-                                          boolean rewardpointseligible, String startYear, String startMonth,
-                                          String endYear, String endMonth, double expectedValue) {
+    void calculateRewardPointsTest(String salesordernumber, String customerid, double totalpurchaseamount,
+            boolean rewardpointseligible, String startYear, String startMonth,
+            String endYear, String endMonth, double expectedValue) {
         RewardPointsRequest request = new RewardPointsRequest();
         request.setCustomerIds(Collections.singletonList(customerid));
         request.setStartRange(new PeriodRange(startYear, startMonth));

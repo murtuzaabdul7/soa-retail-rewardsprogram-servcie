@@ -27,11 +27,13 @@ public class HeaderInfo {
 
     @Override
     public String toString() {
-        return MessageFormat.format("Headerinfo (applicationid={0}, " +
-                        "activityid={1}," +
-                        "interactionid={2}," +
-                        "workflowid={3}," +
-                        "timestamp={4})",
+        return MessageFormat.format("""
+                        Headerinfo (applicationid={0}, \
+                        activityid={1},\
+                        interactionid={2},\
+                        workflowid={3},\
+                        timestamp={4})\
+                        """,
                 replaceMissingHeadersWithNull(applicationid), replaceMissingHeadersWithNull(activityid),
                 replaceMissingHeadersWithNull(interactionid), replaceMissingHeadersWithNull(workdlowid),
                 replaceMissingHeadersWithNull(timestamp));

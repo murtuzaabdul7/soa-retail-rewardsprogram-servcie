@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class SalesOrderDetailsTest {
+class SalesOrderDetailsTest {
 
     @Test
-    public void testSalesOrderDetails() {
+    void testSalesOrderDetails() {
         SalesOrderDetails salesOrderDetails = new SalesOrderDetails();
         salesOrderDetails.setSalesOrderNumber("SALE101");
         salesOrderDetails.setTotalPurchaseAmount(100.0);

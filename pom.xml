@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.assessment.rewardprogram</groupId>
-    <artifactId>tetra-sprintdevicedetails-service</artifactId>
+    <artifactId>rewards-service</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>soa-retail-rewardsprogram-service</name>
@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.2</version>
+        <version>3.0.11</version>
     </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +24,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -75,45 +79,33 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <version>5.8.2</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>4.3.1</version>
+            <version>4.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
-            <version>4.3.1</version>
+            <version>4.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>4.3.1</version>
+            <version>4.11.0</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-            <version>3.1.1</version>
+            <version>4.0.4</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>2.0.1.Final</version>
+            <version>4.0.4</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -125,12 +117,10 @@
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
-            <version>2.3.3</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>3.0.2</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
         </dependency>
     </dependencies>
     <build>
@@ -217,7 +207,7 @@
             <!--                            <generateModelTests>false</generateModelTests>-->
             <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
             <!--                            <modelPackage>-->
-            <!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.devicedetails-->
+            <!--                                com.example.rewardsdetails.domain.generated.devicedetails-->
             <!--                            </modelPackage>-->
             <!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
             <!--                            <configOptions>-->
@@ -241,7 +231,7 @@
             <!--                            <generateModelTests>false</generateModelTests>-->
             <!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
             <!--                            <modelPackage>-->
-            <!--                                com.tmobile.supplychain.tetrasprintdevicedetailsservice.domain.generated.makemodeldetails-->
+            <!--                                com.example.rewardsdetails..domain.generated.makemodeldetails-->
             <!--                            </modelPackage>-->
             <!--                            &lt;!&ndash;                            <modelNamePrefix>Compared</modelNamePrefix>&ndash;&gt;-->
             <!--                            <configOptions>-->
@@ -253,6 +243,25 @@
             <!--                    </execution>-->
             <!--                </executions>-->
             <!--            </plugin>-->
+
+            <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <version>5.5.2</version>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_0</recipe>
+                    </activeRecipes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.openrewrite.recipe</groupId>
+                        <artifactId>rewrite-spring</artifactId>
+                        <version>5.0.10</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
     <!--    <repositories>-->

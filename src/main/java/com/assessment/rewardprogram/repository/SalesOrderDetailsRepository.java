@@ -16,8 +16,10 @@ public interface SalesOrderDetailsRepository extends CrudRepository<SalesOrderDe
     @AllowFiltering
     List<SalesOrderDetails> findAllByCustomerId(String customerId);
 
-    @Query("select * from salesorderdetails where customerid=?0 and createdon >=?1  " +
-            "AND createdon<=?2 AND rewardpointseligible=?3 allow filtering")
+    @Query("""
+            select * from salesorderdetails where customerid=?0 and createdon >=?1  \
+            AND createdon<=?2 AND rewardpointseligible=?3 allow filtering\
+            """)
     List<SalesOrderDetails> findAllByCustomerIdByRange(String customerId, Instant startDate, Instant endDate, boolean isRewardEligible);
 
 

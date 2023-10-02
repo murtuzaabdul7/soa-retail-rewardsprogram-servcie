@@ -1,16 +1,16 @@
 package com.assessment.rewardprogram.exception;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author MBhaiji1
  */
-public class ExceptionTest {
+class ExceptionTest {
 
     @Test
-    public void inputValidationExceptionTest() {
+    void inputValidationExceptionTest() {
         InputValidationException inputValidationException = new InputValidationException("ER001",
                 "Missing mandatory attributes",
                 "Invalid input key:customerIds value: null");
@@ -21,7 +21,7 @@ public class ExceptionTest {
     }
 
     @Test
-    public void invalidInputExceptionTest() {
+    void invalidInputExceptionTest() {
         InvalidInputException invalidInputException = new InvalidInputException("400", "Bad Request", "Bad Request");
         assertNotNull(invalidInputException.toString());
         assertNotNull(invalidInputException.getSystemMessage());
@@ -30,7 +30,7 @@ public class ExceptionTest {
     }
 
     @Test
-    public void invalidHeaderExceptionTest() {
+    void invalidHeaderExceptionTest() {
         InvalidHeaderException invalidHeaderException = new InvalidHeaderException("400", "Bad Request", "Bad Request");
         assertNotNull(invalidHeaderException.toString());
         assertNotNull(invalidHeaderException.getSystemMessage());
@@ -40,7 +40,7 @@ public class ExceptionTest {
 
 
     @Test
-    public void resourceNotFoundExceptionTest() {
+    void resourceNotFoundExceptionTest() {
         ResourceNotFoundException resourceNotFoundException = new ResourceNotFoundException("404", "Data not found", "Data not found");
         assertNotNull(resourceNotFoundException.toString());
         assertNotNull(resourceNotFoundException.getSystemMessage());

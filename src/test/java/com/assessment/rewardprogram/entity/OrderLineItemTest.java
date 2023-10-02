@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class OrderLineItemTest {
+class OrderLineItemTest {
 
     @Test
-    public void testOrderLineItem() {
+    void testOrderLineItem() {
         OrderLineItem orderLineItem = new OrderLineItem();
         orderLineItem.setOrderLineId("111");
         orderLineItem.setStatus("COMPLETED");

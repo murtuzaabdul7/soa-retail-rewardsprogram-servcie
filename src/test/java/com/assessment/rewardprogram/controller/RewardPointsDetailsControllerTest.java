@@ -18,12 +18,12 @@ import org.springframework.http.HttpHeaders;
 
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class RewardPointsDetailsControllerTest {
+class RewardPointsDetailsControllerTest {
 
     @InjectMocks
     private RewardPointsDetailsController rewardPointsDetailsController;
@@ -42,9 +42,9 @@ public class RewardPointsDetailsControllerTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/getRewardPointsControllerTest.csv", numLinesToSkip = 1)
-    public void getRewardPointsDetailsTest(String customerid, String startDate, String endDate,
-                                           double totalpurchaseamount, int totalPurchaseOrders,
-                                           double rewardPoints) {
+    void getRewardPointsDetailsTest(String customerid, String startDate, String endDate,
+            double totalpurchaseamount, int totalPurchaseOrders,
+            double rewardPoints) {
         RewardPointsRequest request = new RewardPointsRequest();
         request.setCustomerIds(Collections.singletonList(customerid));
 

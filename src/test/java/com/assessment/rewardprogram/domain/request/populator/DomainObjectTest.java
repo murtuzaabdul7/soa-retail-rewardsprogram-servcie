@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class DomainObjectTest {
+class DomainObjectTest {
 
     @Test
-    public void headerInfoTest() {
+    void headerInfoTest() {
         HeaderInfo headerInfo = new HeaderInfo();
         headerInfo.setApplicationid("RETAIL");
         headerInfo.setActivityid("12345");
@@ -33,7 +33,7 @@ public class DomainObjectTest {
 
 
     @Test
-    public void periodRangeTest() {
+    void periodRangeTest() {
         PeriodRange periodRange = new PeriodRange();
         periodRange.setMonth("MAY");
         periodRange.setYear("2022");

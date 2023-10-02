@@ -1,11 +1,11 @@
 package com.assessment.rewardprogram;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.client.RestTemplate;
@@ -13,17 +13,17 @@ import org.springframework.web.client.RestTemplate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class RetailRewardsProgramServiceApplicationTest {
+@ExtendWith(MockitoExtension.class)
+class RetailRewardsProgramServiceApplicationTest {
 	
 	@InjectMocks
 	RetailRewardsProgramServiceApplication retailRewardsProgramServiceApplication;
 	
 	@Mock
 	RestTemplate restTemplate;
-	
-	@Test
-	public void testMain() {
+
+    @Test
+    void testMain() {
 		Mockito.mockStatic(SpringApplication.class);
 		ConfigurableApplicationContext configurableApplicationContextMock = Mockito.mock(ConfigurableApplicationContext.class);
 		when(SpringApplication.run((Class<?>)any(), any())).thenReturn(configurableApplicationContextMock);

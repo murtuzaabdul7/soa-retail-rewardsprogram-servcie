@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class AlertLogTest {
+class AlertLogTest {
 
     @Test
-    public void generateAlertTest() {
+    void generateAlertTest() {
         AlertLog alertLog = AlertLog.generateAlert("204", "No Content",
                 RetailRewardsProgramServiceConstants.SERVICE_NAME, "No Content Found for customerId 101",
                 "headerInfo");

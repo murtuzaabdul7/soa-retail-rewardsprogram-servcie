@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class ValidatorTest {
+class ValidatorTest {
 
     @Mock
     private HeaderInfo headerInfo;
@@ -28,8 +28,8 @@ public class ValidatorTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/MandatoryAttributeValidatorTest.csv", numLinesToSkip = 1)
-    public void validateRequestObjectTest(String customerId, String startRangeObject, String startMonth,
-                                          String startYear, String expectedSystemMessage, String errorCode) {
+    void validateRequestObjectTest(String customerId, String startRangeObject, String startMonth,
+            String startYear, String expectedSystemMessage, String errorCode) {
         RewardPointsRequest rewardPointsRequest = new RewardPointsRequest();
         if (customerId == null) {
             rewardPointsRequest.setCustomerIds(null);

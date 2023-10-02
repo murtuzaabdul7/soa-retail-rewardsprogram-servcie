@@ -17,14 +17,14 @@ import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Slf4j
 @ExtendWith(MockitoExtension.class)
-public class RewardPointsDetailsErrorControllerTest {
+class RewardPointsDetailsErrorControllerTest {
 
     @InjectMocks
     private RewardPointsDetailsErrorController pointsDetailsErrorController;
@@ -39,7 +39,7 @@ public class RewardPointsDetailsErrorControllerTest {
     private HttpHeaders headers;
 
     @Test
-    public void handleExceptionTest() {
+    void handleExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.handleException(request, response,
                 new Exception("Some generic exception message"));
         log.info("errorResponse: " + errorResponse);
@@ -49,7 +49,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void inputExceptionHandlerTest() {
+    void inputExceptionHandlerTest() {
         CustomError errorResponse = pointsDetailsErrorController.inputExceptionHandler(request, response,
                 new InvalidInputException("400", "Some InvalidInputException message",
                         "Some InvalidInputException message"));
@@ -60,7 +60,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void resourceNotFoundExceptionHandlerTest() {
+    void resourceNotFoundExceptionHandlerTest() {
         CustomError errorResponse = pointsDetailsErrorController.resourceNotFoundExceptionHandler(request, response,
                 new ResourceNotFoundException("204", "Some ResourceNotFoundException message",
                         "Some ResourceNotFoundException message"));
@@ -71,7 +71,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void inputValidationExceptionTest() {
+    void inputValidationExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.inputValidationException(request, response,
                 new InputValidationException("400", "Some InputValidationException message",
                         "Some InputValidationException message"));
@@ -82,7 +82,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void noHandlerFoundExceptionTest() {
+    void noHandlerFoundExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.noHandlerFoundException(request, response,
                 new NoHandlerFoundException("404", "The resource not found", headers));
         log.info("errorResponse: " + errorResponse);
@@ -92,7 +92,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void mediaTypeNotSupportedExceptionTest() {
+    void mediaTypeNotSupportedExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.mediaTypeNotSupportedException(request, response,
                 new HttpMediaTypeNotSupportedException("MediaType Not Supported"));
         log.info("errorResponse: " + errorResponse);
@@ -102,7 +102,7 @@ public class RewardPointsDetailsErrorControllerTest {
     }
 
     @Test
-    public void methodNotSupportedExceptionTest() {
+    void methodNotSupportedExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.methodNotSupportedException(request, response,
                 new HttpRequestMethodNotSupportedException("Method Not Allowed"));
         log.info("errorResponse: " + errorResponse);
@@ -113,7 +113,7 @@ public class RewardPointsDetailsErrorControllerTest {
 
 
     @Test
-    public void httpMessageNotReadableExceptionTest() {
+    void httpMessageNotReadableExceptionTest() {
         CustomError errorResponse = pointsDetailsErrorController.httpMessageNotReadableException(request, response,
                 new HttpMessageNotReadableException("MediaType Not Supported"));
         log.info("errorResponse: " + errorResponse);

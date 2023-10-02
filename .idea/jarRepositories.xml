@@ -12,6 +12,11 @@
       <option name="url" value="https://artifactory.cdp.t-mobile.com/artifactory/list/gitlab-maven-mirror" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="gitlab-maven-deepio-pat" />
       <option name="name" value="gitlab-maven-deepio-pat" />
       <option name="url" value="https://gitlab.com/api/v4/groups/5984707/-/packages/maven" />

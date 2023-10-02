@@ -4,16 +4,16 @@ package com.assessment.rewardprogram.domain.request.populator;
 import com.assessment.rewardprogram.domain.request.HeaderInfo;
 import com.assessment.rewardprogram.utils.RetailRewardsProgramServiceConstants;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpHeaders;
 
 @Slf4j
-@RunWith(MockitoJUnitRunner.class)
-public class HeaderInfoPopulatorTest {
+@ExtendWith(MockitoExtension.class)
+class HeaderInfoPopulatorTest {
 
 
     @InjectMocks
@@ -23,7 +23,7 @@ public class HeaderInfoPopulatorTest {
     private HeaderInfo headerInfo;
 
     @Test
-    public void populateHeaderTest() {
+    void populateHeaderTest() {
         HttpHeaders httpHeaders = getHeaders();
 
         headerInfoPopulator.populate(httpHeaders);

@@ -4,17 +4,13 @@ import com.assessment.rewardprogram.domain.request.PeriodRange;
 import com.assessment.rewardprogram.domain.request.RewardPointsRequest;
 import com.assessment.rewardprogram.utils.RetailRewardsProgramServiceConstants;
 import com.google.gson.Gson;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -29,28 +25,24 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * @author murtuza
  */
 
-@Ignore
-@RunWith(SpringRunner.class)
+@Disabled
 @SpringBootTest
-public class RewardPointsDetailsControllerITTest {
+class RewardPointsDetailsControllerITTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
 
-
-    @Before
-    public void setup() {
+    @BeforeEach
+    void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
                 .build();
     }
 
     @Test
-    public void getRewardPoints_200_HappyPath() throws Exception {
+    void getRewardPoints_200_HappyPath() throws Exception {
 
         String content = convertJson(createRequestObject("101", "AUGUST", "2022"));
         mockMvc.perform(post("/reward-points-details")
@@ -69,7 +61,7 @@ public class RewardPointsDetailsControllerITTest {
     }
 
     @Test
-    public void getBrandDevice_404_NotFound() throws Exception {
+    void getBrandDevice_404_NotFound() throws Exception {
         mockMvc.perform(post("/reward-points-details1234")
                         .headers(getHeaders())
                         .content(convertJson(createRequestObject("101", "JUNE", "2022")))
@@ -78,7 +70,7 @@ public class RewardPointsDetailsControllerITTest {
     }
 
     @Test
-    public void getBrandDevice_405_MethodNotAllowed() throws Exception {
+    void getBrandDevice_405_MethodNotAllowed() throws Exception {
         mockMvc.perform(get("/reward-points-details")
                         .headers(getHeaders())
                         .content(convertJson(createRequestObject("101", "JUNE", "2022")))
@@ -91,7 +83,7 @@ public class RewardPointsDetailsControllerITTest {
     }
 
     @Test
-    public void getBrandDevice_415_MediaTypeNotSupported() throws Exception {
+    void getBrandDevice_415_MediaTypeNotSupported() throws Exception {
         HttpHeaders headers = getHeaders();
         headers.remove(RetailRewardsProgramServiceConstants.CONTENT_TYPE);
         headers.add(RetailRewardsProgramServiceConstants.CONTENT_TYPE, "text/xml");
@@ -108,7 +100,7 @@ public class RewardPointsDetailsControllerITTest {
     }
 
     @Test
-    public void getBrandDevice_MandatoryFieldMissing() throws Exception {
+    void getBrandDevice_MandatoryFieldMissing() throws Exception {
         mockMvc.perform(post("/reward-points-details")
                         .headers(getHeaders())
                         .content(convertJson(createRequestObject(null, "JUNE", "2022")))

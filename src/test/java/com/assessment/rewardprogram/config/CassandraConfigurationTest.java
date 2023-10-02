@@ -2,22 +2,22 @@ package com.assessment.rewardprogram.config;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 
 @Slf4j
-@RunWith(MockitoJUnitRunner.class)
-public class CassandraConfigurationTest {
+@ExtendWith(MockitoExtension.class)
+class CassandraConfigurationTest {
 
     @InjectMocks
     private CassandraConfiguration cassandraConfiguration;
 
-    @Before
-    public void beforeEachTest() {
+    @BeforeEach
+    void beforeEachTest() {
         ReflectionTestUtils.setField(cassandraConfiguration, "port", 9042);
         ReflectionTestUtils.setField(cassandraConfiguration, "keySpace", "localKeyspaceName");
         ReflectionTestUtils.setField(cassandraConfiguration, "contactPoints", "127.0.0.1");
@@ -26,7 +26,7 @@ public class CassandraConfigurationTest {
 
 
     @Test
-    public void testCassandraConfiguration() {
+    void testCassandraConfiguration() {
         log.info("port: " + cassandraConfiguration.getPort());
         log.info("contactPoints: " + cassandraConfiguration.getContactPoints());
         log.info("keyspaceName: " + cassandraConfiguration.getKeyspaceName());
